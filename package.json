@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/yuban12315/onlineStore-vue#readme",
   "dependencies": {
+    "bootstrap": "^4.0.0-beta.2",
     "vue": "^2.3.3"
   },
   "devDependencies": {

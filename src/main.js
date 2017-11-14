@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import routes from './routes'
-import './main.css'
+import './css/bootstrap.min.css'
 
 const app = new Vue({
     el: '#app',

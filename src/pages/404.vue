@@ -1,6 +1,7 @@
 <template>
     <main-layout>
         <p>Page not found</p>
+        <h1>sdsd</h1>
     </main-layout>
 </template>
 
