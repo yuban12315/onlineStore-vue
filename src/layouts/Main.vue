@@ -1,28 +1,27 @@
 <template>
     <div>
-        <!--<ul>
-            <li>
-                <v-link href="/">Home</v-link>
-                <v-link href="/about">About</v-link>
-            </li>
-        </ul>-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#">APP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <router-link class="nav-link" to="/">Home <span class="sr-only">(current)</span></router-link>
                     </li>
                     <li class="nav-item">
-                        <v-link class="nav-link" href="/about">About</v-link>
+                        <router-link class="nav-link" to="/signIn">Sign in</router-link>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/signUp">Sign up</router-link>
+                    </li>
+                    <li class="nav-item dropdown" v-show="logged">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{username}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Action</a>
@@ -31,9 +30,6 @@
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -41,7 +37,6 @@
                 </form>
             </div>
         </nav>
-        <h1>Hello, world!</h1>
 
         <slot></slot>
     </div>
@@ -49,9 +44,31 @@
 
 <script>
     import VLink from '../components/VLink.vue'
+
     export default {
         components: {
             VLink
+        },
+        data() {
+            return {
+                username: '',
+                logged: false,
+                apiUrl: "http://127.0.0.1/user/"
+            }
+        },
+        methods: {
+            getLogged:async function () {
+//                this.$http.get(`${this.apiUrl}logged`).then((res) => {
+//                    //console.log("data.logged="+res.data)
+//                    this.logged = res.data;
+//                    console.log("this.logged="+this.logged)
+//                })
+                this.logged = await this.$http.get(`${this.apiUrl}logged`);
+                console.log("this.logged="+this.logged)
+            }
+        },
+        created() {
+            this.getLogged()
         }
     }
 </script>
