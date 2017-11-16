@@ -1,10 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueResource from 'vue-resource'
+import VueLocalStorage from 'vue-localstorage'
 import './css/bootstrap.min.css'
+import axios from 'axios';
+
+axios.defaults.withCredentials=true;
+Vue.prototype.$axios = axios;
 
 Vue.use(VueRouter)
-Vue.use(VueResource)
+Vue.use(VueLocalStorage)
+
 
 
 // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)

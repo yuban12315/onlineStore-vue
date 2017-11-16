@@ -1,6 +1,6 @@
 <template>
   <main-layout>
-    ss
+
     <h1 class="h1">Welcome home</h1>
   </main-layout>
 </template>

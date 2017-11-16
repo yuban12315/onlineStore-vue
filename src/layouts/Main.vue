@@ -1,7 +1,7 @@
 <template>
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">APP</a>
+        <nav class="navbar navbar-expand-lg navbar-light navbar-light mynav">
+            <a class="navbar-brand" href="#"><img style="width: 50px" src="/static/img/logo.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -10,13 +10,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <router-link class="nav-link" to="/">Home <span class="sr-only">(current)</span></router-link>
+                        <router-link class="nav-link" to="/">主页 <span class="sr-only">(current)</span></router-link>
                     </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/signIn">Sign in</router-link>
+                    <li class="nav-item" v-show="!logged">
+                        <router-link class="nav-link" to="/signIn">登录</router-link>
                     </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/signUp">Sign up</router-link>
+                    <li class="nav-item" v-show="!logged">
+                        <router-link class="nav-link" to="/signUp">注册</router-link>
                     </li>
                     <li class="nav-item dropdown" v-show="logged">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -27,14 +27,14 @@
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" v-on:click="logout()">登出</a>
                         </div>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
+                <!--<form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                </form>-->
             </div>
         </nav>
 
@@ -58,13 +58,18 @@
         },
         methods: {
             getLogged:async function () {
-//                this.$http.get(`${this.apiUrl}logged`).then((res) => {
-//                    //console.log("data.logged="+res.data)
-//                    this.logged = res.data;
-//                    console.log("this.logged="+this.logged)
-//                })
-                this.logged = await this.$http.get(`${this.apiUrl}logged`);
-                console.log("this.logged="+this.logged)
+                    const res= await this.$axios.get(`${this.apiUrl}logged`);
+                    this.logged=res.data
+                    if (this.logged){
+                        this.username=this.$localStorage.get("username")
+                    }
+                console.log("logged="+this.logged)
+            },
+            logout:async function () {
+                const res=await this.$axios.get(this.apiUrl+'logout')
+                this.logged=false
+                this.$localStorage.set("username",null)
+                console.log("logged="+this.logged)
             }
         },
         created() {
