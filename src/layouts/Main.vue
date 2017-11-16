@@ -24,8 +24,8 @@
                             {{username}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <router-link class="dropdown-item" to="/profile">个人信息</router-link>
+                            <router-link class="dropdown-item" to="/buyList">已买到的宝贝</router-link>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" v-on:click="logout()">登出</a>
                         </div>

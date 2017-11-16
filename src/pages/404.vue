@@ -1,14 +1,29 @@
 <template>
+    <!--个人主页-->
     <main-layout>
-        <p>Page not found</p>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div>
+                    <h1 style="font-weight: 300">404 page not found</h1>
+                </div>
+            </div>
+        </div>
+
     </main-layout>
 </template>
 
 <script>
     import MainLayout from '../layouts/Main.vue'
+    import '../main.css'
+
     export default {
         components: {
             MainLayout
-        }
+        },
+
     }
+
+
+
 </script>
+

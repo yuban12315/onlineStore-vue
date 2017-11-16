@@ -1,5 +1,5 @@
 <template>
-    <!--登录页-->
+    <!--注册页-->
     <main-layout>
         <div class="container">
             <div class="row justify-content-center">

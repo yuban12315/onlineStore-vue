@@ -19,6 +19,7 @@ import Home from './pages/Home.vue'
 import page404 from './pages/404.vue'
 import signIn from './pages/signIn.vue'
 import signUp from './pages/signUp.vue'
+import profile from './pages/profile.vue'
 // 可以从其他文件 import 进来
 const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
@@ -33,6 +34,7 @@ const routes = [
     { path: '/bar', component: Bar },
     {path:'/signIn',component:signIn},
     {path:'/signUp',component:signUp},
+    {path:'/profile',component:profile},
     {path:'*',component:page404}
 ]
 

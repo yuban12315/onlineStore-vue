@@ -3,9 +3,15 @@
 <head>
     <meta charset="utf-8">
     <title> App</title>
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
     <style>
         html {
             height: 100%
@@ -28,16 +34,9 @@
 <body>
 <div id="app">
     <canvas id="canvas" width="1536" height="758"></canvas>
-    <!--<p>-->
-        <!--&lt;!&ndash; 使用 router-link 组件来导航. &ndash;&gt;-->
-        <!--&lt;!&ndash; 通过传入 `to` 属性指定链接. &ndash;&gt;-->
-        <!--&lt;!&ndash; <router-link> 默认会被渲染成一个 `<a>` 标签 &ndash;&gt;-->
-        <!--<router-link to="/foo">Go to Foo</router-link>-->
-        <!--<router-link to="/bar">Go to Bar</router-link>-->
-    <!--</p>-->
     <!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染在这里 -->
-        <router-view></router-view>
+    <router-view></router-view>
 </div>
 <script src="/dist/build.js"></script>
 <script>
@@ -125,7 +124,7 @@
     let circles = [];
     let current_circle = new currentCirle(0, 0)
 
-    let draw = function() {
+    let draw = function () {
         ctx.clearRect(0, 0, w, h);
         for (let i = 0; i < circles.length; i++) {
             circles[i].move(w, h);
@@ -143,7 +142,7 @@
         requestAnimationFrame(draw)
     }
 
-    let init = function(num) {
+    let init = function (num) {
         for (var i = 0; i < num; i++) {
             circles.push(new Circle(Math.random() * w, Math.random() * h));
         }
@@ -152,13 +151,13 @@
 
     window.addEventListener('load', init(60));
 
-    window.onmousemove = function(e) {
+    window.onmousemove = function (e) {
         e = e || window.event;
         current_circle.x = e.clientX;
         current_circle.y = e.clientY;
     }
 
-    window.onmouseout = function() {
+    window.onmouseout = function () {
         current_circle.x = null;
         current_circle.y = null;
     }
