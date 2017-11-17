@@ -10,7 +10,7 @@
 
 <script>
     import MainLayout from '../layouts/Main.vue'
-    import '../main.css'
+    import '../css/main.css'
     import '../css/signIn.css'
 
     export default {

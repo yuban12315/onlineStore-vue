@@ -1,7 +1,7 @@
 <template>
     <!--登录页-->
     <main-layout>
-        <div class="container">
+        <div class="container sign">
             <div class="row justify-content-center">
                 <form name="signInForm" id="signInForm" class="form col-lg-4 col-sm-10" ng-submit="submit()">
                     <div class="col-12 text-center">
@@ -9,7 +9,6 @@
                         <h4 class="logo-text">童心未泯</h4>
                     </div>
                     <div class="title col-xs-12">
-
                         <b class="label- label-active">登录</b>
                         <b class="divider">·</b>
                         <router-link class="label-" to="/signUp">注册</router-link>
@@ -38,7 +37,7 @@
 
 <script>
     import MainLayout from '../layouts/Main.vue'
-    import '../main.css'
+    import '../css/main.css'
     import '../css/signIn.css'
 
     export default {

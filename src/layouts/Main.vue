@@ -6,7 +6,6 @@
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -31,13 +30,12 @@
                         </div>
                     </li>
                 </ul>
-                <!--<form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>-->
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="商品" aria-label="Search">
+                    <button class="btn btn-true my-2 my-sm-0" type="button">搜索</button>
+                </form>
             </div>
         </nav>
-
         <slot></slot>
     </div>
 </template>
@@ -63,13 +61,13 @@
                     if (this.logged){
                         this.username=this.$localStorage.get("username")
                     }
-                console.log("logged="+this.logged)
+                //console.log("logged="+this.logged)
             },
             logout:async function () {
                 const res=await this.$axios.get(this.apiUrl+'logout')
                 this.logged=false
                 this.$localStorage.set("username",null)
-                console.log("logged="+this.logged)
+                //console.log("logged="+this.logged)
             }
         },
         created() {

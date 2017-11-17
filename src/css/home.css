@@ -26,14 +26,17 @@
     color: white;
 }
 .goods-list{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .box{
     padding: 10px;
 }
 .goods{
+    overflow: hidden;
     background-color: white;
-    padding: 10px;
+    padding-bottom: 10px;
+    border-bottom: 10px #ED705B dotted;
+    padding-top: 30px;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.15);
 }
 .goods-list b{
@@ -43,9 +46,11 @@
 .goods-list h1,h2,h3,h4,h5,h6{
     overflow: hidden;
 }
+
 .goods img{
     width: 400px;
-    height: 400px;
+    height: 450px;
+    margin: 0 auto;
 }
 .goods .price{
     color: #ED705B;

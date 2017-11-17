@@ -2,7 +2,7 @@
     <!--注册页-->
     <main-layout>
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center sign ">
                 <form name="signInForm" id="signInForm" class="form col-lg-4 col-sm-10" ng-submit="submit()">
                     <div class="col-12 text-center">
                         <img class="col-8 logo" src="/static/img/logo.png" alt="">
@@ -37,7 +37,7 @@
 
 <script>
     import MainLayout from '../layouts/Main.vue'
-    import '../main.css'
+    import '../css/main.css'
     import '../css/signIn.css'
 
     export default {

@@ -2,7 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueLocalStorage from 'vue-localstorage'
 import './css/bootstrap.min.css'
+import './css/main.css'
 import axios from 'axios';
+
 
 axios.defaults.withCredentials=true;
 Vue.prototype.$axios = axios;
@@ -20,9 +22,8 @@ import page404 from './pages/404.vue'
 import signIn from './pages/signIn.vue'
 import signUp from './pages/signUp.vue'
 import profile from './pages/profile.vue'
+import detail from './pages/detail.vue'
 // 可以从其他文件 import 进来
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
 
 // 2. 定义路由
 // 每个路由应该映射一个组件。 其中"component" 可以是
@@ -31,7 +32,7 @@ const Bar = { template: '<div>bar</div>' }
 // 我们晚点再讨论嵌套路由。
 const routes = [
     { path: '/', component: Home },
-    { path: '/bar', component: Bar },
+    { path: '/detail/:id', component: detail },
     {path:'/signIn',component:signIn},
     {path:'/signUp',component:signUp},
     {path:'/profile',component:profile},
