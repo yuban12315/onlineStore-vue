@@ -23,16 +23,16 @@
                             {{username}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <router-link class="dropdown-item" to="/profile">个人信息</router-link>
-                            <router-link class="dropdown-item" to="/buyList">已买到的宝贝</router-link>
+                            <router-link class="dropdown-item" to="/profile">个人主页</router-link>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" v-on:click="logout()">登出</a>
                         </div>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="商品" aria-label="Search">
-                    <button class="btn btn-true my-2 my-sm-0" type="button">搜索</button>
+                    <input class="form-control mr-sm-2" type="search" v-model="searchName" placeholder="商品"
+                           aria-label="Search">
+                    <button class="btn btn-true my-2 my-sm-0" v-on:click="search()" type="button">搜索</button>
                 </form>
             </div>
         </nav>
@@ -51,23 +51,31 @@
             return {
                 username: '',
                 logged: false,
-                apiUrl: "http://127.0.0.1/user/"
+                apiUrl: "http://127.0.0.1/user/",
+                searchName: ''
             }
         },
         methods: {
-            getLogged:async function () {
-                    const res= await this.$axios.get(`${this.apiUrl}logged`);
-                    this.logged=res.data
-                    if (this.logged){
-                        this.username=this.$localStorage.get("username")
-                    }
+            getLogged: async function () {
+                const res = await this.$axios.get(`${this.apiUrl}logged`);
+                this.logged = res.data
+                if (this.logged) {
+                    this.username = this.$localStorage.get("username")
+                }
                 //console.log("logged="+this.logged)
             },
-            logout:async function () {
-                const res=await this.$axios.get(this.apiUrl+'logout')
-                this.logged=false
-                this.$localStorage.set("username",null)
+            logout: async function () {
+                const res = await this.$axios.get(this.apiUrl + 'logout')
+                this.logged = false
+                this.$localStorage.remove("username")
                 //console.log("logged="+this.logged)
+            },
+            search: async function () {
+//                const res=await this.$axios.get(`http://127.0.0.1/goods/search/${this.searchName}`)
+//                this.$localStorage.set("sr",res.data)
+                //console.log(this.$localStorage.set("sr",res.data))
+
+                this.$router.push({path: "/search/" + this.searchName})
             }
         },
         created() {

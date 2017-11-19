@@ -74,7 +74,7 @@
                 else {
                     this.$localStorage.set("username",this.formData.username)
                     console.log(this.$localStorage.get("username"))
-                    this.$router.push({path:'/'})
+                    this.$router.go(-1)
                 }
             }
         }

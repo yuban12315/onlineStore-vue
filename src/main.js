@@ -1,17 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueLocalStorage from 'vue-localstorage'
+import BootstrapVue from 'bootstrap-vue'
 import './css/bootstrap.min.css'
 import './css/main.css'
 import axios from 'axios';
 
 
-axios.defaults.withCredentials=true;
+axios.defaults.withCredentials = true;
 Vue.prototype.$axios = axios;
 
 Vue.use(VueRouter)
 Vue.use(VueLocalStorage)
-
+Vue.use(BootstrapVue)
 
 
 // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
@@ -23,6 +24,8 @@ import signIn from './pages/signIn.vue'
 import signUp from './pages/signUp.vue'
 import profile from './pages/profile.vue'
 import detail from './pages/detail.vue'
+import search from './pages/search.vue'
+import create from './pages/admin.vue'
 // 可以从其他文件 import 进来
 
 // 2. 定义路由
@@ -31,18 +34,27 @@ import detail from './pages/detail.vue'
 // 或者，只是一个组件配置对象。
 // 我们晚点再讨论嵌套路由。
 const routes = [
-    { path: '/', component: Home },
-    { path: '/detail/:id', component: detail },
-    {path:'/signIn',component:signIn},
-    {path:'/signUp',component:signUp},
-    {path:'/profile',component:profile},
-    {path:'*',component:page404}
+    {path: '/', component: Home},
+    {path: '/detail/:id', component: detail},
+    {path: '/signIn', component: signIn},
+    {path: '/signUp', component: signUp},
+    {path: '/profile', component: profile},
+    {path: '/search/:name', component: search},
+    {path: '/create', component: create},
+    {path: '*', component: page404}
 ]
 
 // 3. 创建 router 实例，然后传 `routes` 配置
 // 你还可以传别的配置参数, 不过先这么简单着吧。
 const router = new VueRouter({
-    routes // （缩写）相当于 routes: routes
+    routes, // （缩写）相当于 routes: routes
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return {x: 0, y: 0}
+        }
+    }
 })
 
 // 4. 创建和挂载根实例。

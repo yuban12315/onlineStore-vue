@@ -2,8 +2,6 @@
     margin-top: 20px;
     background-color: white;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.15);
-
-    opacity: 0.8;
 }
 .choose-list .title{
     background-color: #ED705B;
@@ -54,4 +52,12 @@
 }
 .goods .price{
     color: #ED705B;
+}
+
+.btns{
+    margin-bottom: 50px;
+}
+
+.user{
+    padding: 10px;
 }

@@ -19,6 +19,11 @@
                             <!--{{item}}-->
                         </div>
                     </div>
+                    <div class="row col-12 justify-content-center btns">
+                        <div class="col-4" v-show="hasNext">
+                            <button class="col btn btn-true" v-on:click="getMore()">获取更多</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,6 +44,8 @@
                 apiUrl: 'http://127.0.0.1/goods/',
                 goods: [],
                 page: 0,
+                hasNext:false,
+                assort:'',
                 goodsType: [{
                     assort: "手办"
                 }, {
@@ -53,10 +60,29 @@
         methods: {
             getGoods: async function (assort) {
                 const res = await this.$axios.get(`${this.apiUrl}getList/${assort}/${this.page}`)
-                this.goods = res.data
+                if (assort===this.assort){
+                    for(let i in res.data){
+                        this.goods.push(res.data[i])
+                    }
+                }
+                else {
+                    this.goods=res.data
+                }
+                if (this.goods.length===10){
+                    this.hasNext=true
+                }
+                if (this.goods.length===0){
+                    this.hasNext=false
+                }
             },
             detail:async function (id) {
                 this.$router.push({path:"/detail/"+id})
+            },
+            getMore:async function () {
+               if(this.hasNext){
+                   this.page+=1;
+                   this.getGoods(this.assort)
+               }
             }
         },
         created() {
