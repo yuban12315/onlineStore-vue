@@ -25,7 +25,7 @@ import signUp from './pages/signUp.vue'
 import profile from './pages/profile.vue'
 import detail from './pages/detail.vue'
 import search from './pages/search.vue'
-import create from './pages/admin.vue'
+import admin from './pages/admin.vue'
 // 可以从其他文件 import 进来
 
 // 2. 定义路由
@@ -40,7 +40,7 @@ const routes = [
     {path: '/signUp', component: signUp},
     {path: '/profile', component: profile},
     {path: '/search/:name', component: search},
-    {path: '/create', component: create},
+    {path: '/admin', component: admin},
     {path: '*', component: page404}
 ]
 

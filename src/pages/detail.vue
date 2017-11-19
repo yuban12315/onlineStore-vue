@@ -11,7 +11,7 @@
                     <div class="col-12 nopadding">
                         <h4 class="title">{{goods.name}}</h4>
                         <div>
-                            原价&emsp;：<b class="price-useless">¥ {{goods.price + 99}}.00</b>
+                            原价&emsp;：<b class="price-useless">¥ {{getPrice() + 99}}.00</b>
                         </div>
                         <div class="">
                             <b>促销价：</b><b class="price">¥ {{goods.price}}.00</b>
@@ -108,6 +108,10 @@
                         this.modalShow = true
                     }
                 }
+            },
+            getPrice:function(){
+                const add=[103,122,145,167,180,200]
+                return parseInt(this.goods.price)+add[this.goods.id%6]
             }
         },
         created() {

@@ -6,7 +6,7 @@
                 <div class="col-md-5 col-sm-12">
                     <div class="choose-list">
                         <h4 class="title text-center">个人信息</h4>
-                        <div class="user">
+                        <div class="padding10">
                             <p>用户名&emsp;&emsp;：{{user.username}}</p>
                             <p>余额&emsp;&emsp;&emsp;：¥ {{user.money}}</p>
                             <p>已购商品数：{{goodsList.length}}</p>
@@ -16,7 +16,7 @@
                 <div class="col-md-7 col-sm-12">
                     <div class="choose-list">
                         <h4 class="title text-center">余额充值</h4>
-                        <div class="user">
+                        <div class="padding10">
                             <input class="form-control sign-in col-10 offset-1" placeholder="充值的金额"
                                    v-model="chargeMoney"/>
                             <button class="btn btn-true col-4 offset-4" v-on:click="charge()">充值</button>
